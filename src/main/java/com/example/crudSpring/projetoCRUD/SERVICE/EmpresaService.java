@@ -1,6 +1,7 @@
 package com.example.crudSpring.projetoCRUD.SERVICE;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,12 @@ public class EmpresaService {
         empresaRepository.delete(dadoEmpresa);
     }//Esse comando é "void" pq não precisa de nenhum rotorno
 
+    public Optional<Empresa> buscaPorId(long id){
+        return empresaRepository.findById(id);
+    }//realizar a busca de dados no banco usando
+     //o id criado da classe
+
+     public Empresa editarDadosEmpresa(Long id, Empresa dadosAtualizados){
+        return null;
+     }
 }
