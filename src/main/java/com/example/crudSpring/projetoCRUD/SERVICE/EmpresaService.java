@@ -38,6 +38,17 @@ public class EmpresaService {
      //o id criado da classe
 
      public Empresa editarDadosEmpresa(Long id, Empresa dadosAtualizados){
-        return null;
-     }
+        Empresa empresaBuscada = buscaPorId(id).orElseThrow( () -> new IllegalArgumentException("Empresa não encontrada"));
+
+      empresaBuscada.setNome(dadosAtualizados.getNome());
+      empresaBuscada.setCnpj(dadosAtualizados.getCnpj());
+      empresaBuscada.setRamo(dadosAtualizados.getRamo());
+
+      return empresaRepository.save(empresaBuscada);
+
+   }
+
+   public List<Empresa> buscarEmpresaPorNome(String nome_empresa){
+     return empresaRepository.findByNomeContainingIgnoreCase(nome_empresa);
+   }
 }
