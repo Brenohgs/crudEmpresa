@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Cadastrar Empresa</title>
 </head>
-<body class="container mt-4">
+<body>
 
     <h2>Cadastrar Empresa</h2>
 
     <!-- Formulário para cadastro -->
-    <form th:action="@{/empresaCTR/}" th:object="${empresa}" method="post">
+    <form th:action="@{/empresaCTR/salvarEmpresa}" th:object="${empresa}" method="post">
 
         <label for="nome">Nome da Empresa</label>
         <input type="text" th:field="*{nome}" id="nome" placeholder="Digite o nome da empresa" required>
@@ -27,7 +27,7 @@
         <br>
 
         <button type="submit" >Salvar</button>
-        <a th:href="@{/empresaCTR/listarTodas}" class="btn btn-secondary">Cancelar</a>
+        <a th:href="@{/empresaCTR}">Cancelar</a>
 
     </form>
 
