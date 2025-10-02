@@ -30,7 +30,7 @@ public class Empresa {
     @Column(name = "ramo", nullable = false, length=100)
     private String ramo;
 
-    public Empresa(String nome_empresa, int cnpj, String ramo) {
+    public Empresa(String nome, int cnpj, String ramo) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.ramo = ramo;

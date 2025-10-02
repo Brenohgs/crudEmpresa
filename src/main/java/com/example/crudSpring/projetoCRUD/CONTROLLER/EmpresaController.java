@@ -5,6 +5,9 @@ import org.springframework.ui.Model;
 
 import com.example.crudSpring.projetoCRUD.ENTITY.Empresa;
 import com.example.crudSpring.projetoCRUD.SERVICE.EmpresaService;
+
+import aj.org.objectweb.asm.Attribute;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +31,11 @@ public class EmpresaController {
         }
     
         //chamada para listar todas as empresas
+        @GetMapping("/listarTodasEmpresas")
+        public String listarEmpresas(Model oModel) {
+            oModel.addAttribute("empresas", empresaService.findAll());
+            return "listarEmpresa";
+        }
         
         @GetMapping("/viewCadEmpresa")      // "oModel = objetoModel" nome da classe model
         public String mostrarFormCadastro(Model oModel) {
@@ -40,7 +48,7 @@ public class EmpresaController {
             //chamando o método cadastrar e passando
             //o objeto (pacotinho) com os dados que precisam ser salvos
             empresaService.cadastrarEmpresa(objEmpresa);
-            return "redirect:/empresaCTR/viewCadEmpresa";
+            return "redirect:/empresaCTR/listarTodasEmpresas";
         }
         
     
